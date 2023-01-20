@@ -1,0 +1,28 @@
+kubectl get pods
+kubectl describe pods
+
+kubectl run strigus --image nginx --port 80
+
+kubectl run -it girus --image busybox
+
+kubectl attach girus-1 -c girus-1 -it
+
+kubectl exec -it strigus -- bash
+
+kubectl exec strigus -- cat /usr/share/nginx/html/index.html
+
+
+kubectl run girus --image alphine --dry-run=client -o yaml > pod.yaml
+
+
+#cria
+kubectl create -f pod.yaml
+
+#cria ou atualiza
+kubectl apply -f pod.yaml
+
+
+kubectl logs -f girus
+kubectl logs -f girus -c nginx
+
+
