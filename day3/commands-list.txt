@@ -1,0 +1,79 @@
+kubectl apply -f deployment.yaml
+kubectl get pods -l app=nginx-deployment
+
+
+
+
+
+
+
+kubectl describe deployments.apps nginx-deployment
+kubectl describe deployments.apps nginx-deployment -o yaml
+
+kubectl create deployment --image nginx --replicas 3 nginx-deployment --dry-run=client -o yaml> novo-deployment.yaml
+
+kubectl exec -it nginx-deployment-794f656f8b-tc9rz -- bash
+
+
+
+
+
+
+
+
+
+kubectl create namespace giropops
+kubectl get namespaces
+
+kubectl create namespace giropops --dry-run=client -o yaml > namespace.yaml
+kubectl create namespace -f namespace.yaml
+
+kubectl get pods --namespace=giropops
+kubectl apply -f update-deployment.yaml
+
+kubectl exec -it -n giropops nginx-deployment-654c7d5ccc-m94cs -- nginx -v
+
+
+kubectl get pods -w
+
+
+
+
+
+
+
+
+kubectl apply -f strategy-deployment.yaml
+kubectl rollout status deployment -n giropops nginx-deployment
+
+
+
+
+
+
+kubectl describe deployments.apps -n giropops nginx-deployment
+
+kubectl rollout undo deployment -n giropops nginx-deployment
+
+kubectl rollout history deployment -n giropops nginx-deployment
+kubectl rollout history deployment -n giropops nginx-deployment --revision 4
+
+kubectl rollout undo deployment -n giropops nginx-deployment --to-revision 4
+
+kubectl rollout pause deployment -n giropops nginx-deployment
+kubectl rollout resume deployment -n giropops nginx-deployment
+kubectl rollout restart deployment -n giropops nginx-deployment
+
+
+kubectl scale deployment -n giropops nginx-deployment --replicas 4
+
+
+
+
+
+
+
+
+
+
+
